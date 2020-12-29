@@ -11,7 +11,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
-  "homepage": "https://MrBongo-1.github.io/Random-Quote-Machine",
+  "homepage": "https://MrBongo-1.github.io/Promodoro-Clock",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
