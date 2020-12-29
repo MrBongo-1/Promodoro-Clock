@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import beepSound from './audio/Beep.mp3'
 
-let timer = '';
+let timer = "";
 
 function stringify(x) {
   let string = '';
