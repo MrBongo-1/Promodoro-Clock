@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+@font-face {
+  font-family: 'Digital';
+  src: url(./font/DS-DIGI.TTF);
+}
+
+@keyframes redFlashing {
+  0% {color: #f0f0f0;}
+  50% {color: red;}
+  100% {color: #f0f0f0;}
+}
+
+#app-title {
+  font-size: 60px;
+  font-family: 'Bungee';
+  margin-bottom: 0px;
+}
+
+#container-one {
+  display: grid;
+  grid-template-columns: auto auto;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Source Sans Pro';
+  margin: auto;
+  width: 45%;
+}
+
+#container-two {
+  display: grid;
+  grid-template-columns: auto auto;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Source Sans Pro';
+  margin: auto;
+  width: 45%;
+}
+
+#container-three {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: auto;
+  width: 45%;
+}
+
+#break-length {
+  margin-top: 0px;
+}
+
+#session-length {
+  margin-top: 0px;
+}
+
+#timer-label {
+  font-family: 'Source Sans Pro';
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 60px;
+  margin-bottom: 0px;
+}
+
+#time-left {
+  font-family: 'Digital';
+  margin-top: 5px;
+  margin-bottom: 50px;
+  font-size: 70px;
+}
+
+#start_stop {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  outline: none;
+  margin: 0px 10px;
+}
+
+#reset {
+  font-family: 'Source Sans Pro';
+  font-size: 20px;
+  font-weight: bold;
+  height: 40px;
+  width: 70px;
+  border-radius: 10px;
+  outline: none;
+}
+
+#status {
+  font-family: 'Source Sans Pro';
+  font-size: 25px;
+}
+
+.btn {
+  color: #f0f0f0;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Source Sans Pro';
+  border-radius: 50px;
+  border-color: #f0f0f0;
+  border-style: solid;
+  box-shadow: 0 7px #999;
+  width: 90px;
+  height: 30px;
+  margin: 0px 5px;
+  outline: none;
+}
+
+.btn:active {
+  box-shadow: 0 4px #666;
+  transform: translateY(3px);
+}
+
+.increase {
+  background: green;
+}
+
+.decrease {
+  background: red;
+}
+
+.flashing {
+  animation-name: redFlashing;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.red {
+  color: red;
+}
+
+.bigPlay {
+  font-size: 20px;
+  color: #f0f0f0;
+  background: green;
+  border-color: #f0f0f0;
+}
+
+.redPause {
+  background: #f0f0f0;
+  color: red;
+  border-color: red;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #3c414a;
+  color: #f0f0f0;
+  text-align: center;
+}

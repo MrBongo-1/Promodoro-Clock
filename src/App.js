@@ -48,8 +48,8 @@ class Setting extends React.Component {
     this.smallerSession = this.smallerSession.bind(this);
   }
   /*When you click on the Play/Pause button, if countStatus is set to 'Paused',
-  the timer variable is assigned to the myTimer function which executes every second (1000ms) and the countStatus is set to 'Play'.
-  If countStatus is set to 'Play' when clicking on the Play/Pause button, the myTimer function is stopped and the interval cleared.
+  the timer variable is assigned to the myTimer function which executes every second (1000ms) and the countStatus is set to 'Playing'.
+  If countStatus is set to 'Playing' when clicking on the Play/Pause button, the myTimer function is stopped and the interval cleared.
   countStatus will then be set to 'Paused'.*/
   startAndStop() {
     if(this.state.countStatus === 'Paused') {
@@ -129,9 +129,9 @@ class Setting extends React.Component {
         }
       }.bind(this), 1000);
       this.setState({
-        countStatus: 'Play'
+        countStatus: 'Playing'
       });
-    } else if(this.state.countStatus === 'Play') {
+    } else if(this.state.countStatus === 'Playing') {
       clearInterval(timer);
 
       this.setState({
@@ -275,47 +275,79 @@ class Setting extends React.Component {
   }
 
   render() {
+    let symbol = '';
+
+    let className = '';
+
+    let className2 = '';
+    //Changes the pause/play symbol according to the count status
+    if (this.state.countStatus === "Paused") {
+      symbol = '►';
+      className2 = 'bigPlay';
+    } else {
+      symbol = '▐ ▌';
+      className2 = 'redPause';
+    }
+    //Sets a class when the timer hits 01:00. That class will be styled to flash red
+    if (this.state.currentSessionTime === 0 && this.state.secLeft <= 59 && this.state.countStatus === 'Playing') {
+      className = 'flashing';
+    } else if (this.state.currentSessionTime === 0 && this.state.secLeft <= 59) {
+      className = 'red';
+    } else {
+      className = '';
+    }
+
     return (
       <div>
-        <p id="break-label">Break length (min)
-        </p>
+        <div id="container-one">
+          <p id="break-label">Break length (min)
+          </p>
 
-        <p id="session-label">Session length (min)
-        </p>
+          <p id="session-label">Session length (min)
+          </p>
+        </div>
 
-        <p id="break-length">{this.state.breakTime}
-        </p>
+        <div id="container-two">
+          <p id="break-length">{this.state.breakTime}
+          </p>
 
-        <p id="session-length">{this.state.sessionTime}
-        </p>
+          <p id="session-length">{this.state.sessionTime}
+          </p>
+        </div>
 
-        <button id="break-increment" onClick={this.biggerBreak}>B
-        </button>
+        <div id="container-three">
+          <div>
+          <button id="break-increment" className='btn increase' onClick={this.biggerBreak}>▲ Break
+          </button>
 
-        <button id="break-decrement" onClick={this.smallerBreak}>b
-        </button>
+          <button id="break-decrement" className='btn decrease' onClick={this.smallerBreak}>▼ Break
+          </button>
+          </div>
 
-        <button id="session-increment" onClick={this.biggerSession}>S
-        </button>
+          <div>
+          <button id="session-increment" className='btn increase' onClick={this.biggerSession}>▲ Session
+          </button>
 
-        <button id="session-decrement" onClick={this.smallerSession}>s
-        </button>
+          <button id="session-decrement" className='btn decrease' onClick={this.smallerSession}>▼ Session
+          </button>
+          </div>
+        </div>
 
         <p id="timer-label">{this.state.sessionStatus}
         </p>
 
-        <p id="time-left">{this.state.minFormat}:{this.state.secFormat}
+        <p id="time-left" className={className}>{this.state.minFormat}:{this.state.secFormat}
         </p>
 
         <audio src={this.state.source} id='beep' />
 
-        <button id="start_stop" onClick={this.startAndStop}>||
+        <button id="start_stop" className={className2} onClick={this.startAndStop}>{symbol}
         </button>
 
-        <button id="reset" onClick={this.resetTimer}>X
+        <button id="reset" onClick={this.resetTimer}>Reset
         </button>
 
-        <p>{this.state.countStatus}
+        <p id="status">{this.state.countStatus}
         </p>
       </div>
     );
